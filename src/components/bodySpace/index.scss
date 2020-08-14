@@ -1,0 +1,38 @@
+.bodyspace_textarea{
+  font-size: 10px;
+  width: 100%;
+  height: 20vh;
+  resize: none;
+  border: gray;
+  border-radius: 2px;
+
+}
+
+.bodyspace{
+
+  .bodyspace_dialog_window{
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    height: 30vh;
+    max-height: 30vh;
+    margin: 5px;
+    background: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-size: 10px;
+  }
+
+  .bodyspace_container{
+    width: 100%;
+    height: 100%;
+    margin: 5px;
+
+    .bodyspace_button{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+
+    }
+  }
+}

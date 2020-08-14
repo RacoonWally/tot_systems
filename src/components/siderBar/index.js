@@ -2,8 +2,10 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 
 import {
-    chooseChat
+    chooseChat, fetchSpamMessageList, fetchWorkMessageList
 } from '../../actions'
+
+import "./index.scss"
 
 class SideBar extends Component {
 
@@ -13,18 +15,24 @@ class SideBar extends Component {
     };
 
     toggleClass = (currBtn) => {
-        const {chooseChat} = this.props;
+        const {chooseChat, isAuth, fetchWorkMessageList, fetchSpamMessageList} = this.props;
         switch (currBtn) {
             case "work": {
                 this.setState({activeWork: true});
                 this.setState({activeSpam: false});
-                chooseChat("work");
+                chooseChat(currBtn);
+                if (isAuth){
+                    fetchWorkMessageList(currBtn)
+                }
                 break
             }
             case "spam": {
                 this.setState({activeSpam: true});
                 this.setState({activeWork: false});
-                chooseChat("spam");
+                chooseChat(currBtn);
+                if (isAuth){
+                    fetchSpamMessageList(currBtn)
+                }
                 break
             }
             default: {
@@ -35,16 +43,19 @@ class SideBar extends Component {
 
     render() {
         return (
-            <div>
+            <div className="sidebar">
+                <div className="sidebar_label">
+                    <label>Обсуждения:</label>
+                </div>
                 <ul className="list-group">
-                    <li className={this.state.activeWork ? "list-group-item active" : "list-group-item"}>
+                    <li className={this.state.activeWork ? "list-group-item active mt-1" : "list-group-item mt-1"}>
                         <div onClick={event => this.toggleClass("work")} role="button">
-                            Рабочий чат
+                            Рабочий
                         </div>
                     </li>
-                    <li className={this.state.activeSpam ? "list-group-item active" : "list-group-item"}>
+                    <li className={this.state.activeSpam ? "list-group-item active mt-1" : "list-group-item mt-1"}>
                         <div onClick={event => this.toggleClass("spam")} role="button">
-                            Спам чат
+                            Спам
                         </div>
                     </li>
                 </ul>
@@ -54,8 +65,17 @@ class SideBar extends Component {
 
 }
 
-const mapDispatchToProps =  {
-    chooseChat
+const mapStateToProps = (state) => {
+    const {isAuth} = state.mainPage;
+    return {
+        isAuth
+    }
 };
 
-export default connect(null ,mapDispatchToProps)(SideBar);
+const mapDispatchToProps =  {
+    chooseChat,
+    fetchWorkMessageList,
+    fetchSpamMessageList
+};
+
+export default connect(mapStateToProps ,mapDispatchToProps)(SideBar);

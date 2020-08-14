@@ -1,0 +1,21 @@
+.sidebar{
+  min-height: 75vh;
+  background-color: #3C5666;
+  border-radius: 3px;
+  color: #F5FFFA;
+  text-align: center;
+  
+  .sidebar_label{
+    padding-top: 5px;
+  }
+
+  .list-group {
+    padding-top: 20px;
+
+    .list-group-item{
+      background-color: #106CB5;
+
+    }
+
+  }
+}

@@ -1,13 +1,13 @@
-import workMessageList from "./mockDataSpam"
-import spamMessageList from "./mockDataWork"
+import workMessageList from "./mockDataWork"
+import spamMessageList from "./mockDataSpam"
 
-const getList = (name) => {
-    switch (name) {
+export const getList = (type) => {
+    switch (type) {
         case "work": {
-            return
+            return workMessageList
         }
         case "spam": {
-            return
+            return spamMessageList
         }
         default: {
             return;
@@ -15,3 +15,21 @@ const getList = (name) => {
     }
 
 };
+
+export const addToList = (username, message, type) => {
+    switch (type) {
+        case "work": {
+            workMessageList.unshift({username, message});
+            return workMessageList
+        }
+        case "spam": {
+            spamMessageList.unshift({username, message});
+            return spamMessageList
+        }
+        default: {
+
+        }
+    }
+};
+
+

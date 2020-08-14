@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 
+import './index.scss'
 
 import Header from "../../components/header";
 import Auth from "../../components/auth";
@@ -11,18 +12,18 @@ import BodySpace from "../../components/bodySpace";
 class MainPage extends Component {
 
     render() {
-        const {isAuth} = this.props;
+        const {isAuth, typeChat} = this.props;
         if (isAuth === undefined || !isAuth) {
             return (
                 <div>
                     <Header/>
                     <div className="container-fluid">
-                        <div className="row">
-                            <div className="col-3">
-                                <SideBar />
+                        <div className="row pt-3">
+                            <div className="col-2">
+                                <SideBar/>
                             </div>
                             <div className="col-9">
-                                <Auth />
+                                <Auth/>
                             </div>
                         </div>
                     </div>
@@ -34,12 +35,12 @@ class MainPage extends Component {
                 <div>
                     <Header/>
                     <div className="container-fluid">
-                        <div className="row">
-                            <div className="col-3">
-                                <SideBar />
+                        <div className="row pt-3">
+                            <div className="col-2">
+                                <SideBar/>
                             </div>
                             <div className="col-9">
-                                <BodySpace />
+                                <BodySpace/>
                             </div>
                         </div>
                     </div>
@@ -53,9 +54,11 @@ class MainPage extends Component {
 
 const mapStateToProps = (state) => {
     const {isAuth} = state.mainPage;
+    const {typeChat} = state.sideBar;
 
     return {
-        isAuth
+        isAuth,
+        typeChat
     }
 };
 

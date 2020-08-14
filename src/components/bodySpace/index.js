@@ -5,7 +5,7 @@ import './index.scss'
 
 import {addDataToList} from '../../actions'
 import DialogItem from '../dialogItem'
-import {type} from "ramda";
+
 
 class BodySpace extends Component {
 

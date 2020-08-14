@@ -45,7 +45,7 @@ class SideBar extends Component {
         return (
             <div className="sidebar">
                 <div className="sidebar_label">
-                    <label>Обсуждения:</label>
+                    <label>Список Чатов</label>
                 </div>
                 <ul className="list-group">
                     <li className={this.state.activeWork ? "list-group-item active mt-1" : "list-group-item mt-1"}>
